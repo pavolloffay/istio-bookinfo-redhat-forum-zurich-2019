@@ -1,0 +1,30 @@
+##################################################################################################
+# Reviews service
+##################################################################################################
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: reviews-v3
+  labels:
+    app: reviews
+    version: v3
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9080"
+        prometheus.io/scheme: "http"
+        kiali.io/runtimes: quarkus
+      labels:
+        app: reviews
+        version: v3
+    spec:
+      containers:
+        - name: reviews
+          image: quay.io/pavolloffay/examples-bookinfo-reviews-v3:0.12.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9080
