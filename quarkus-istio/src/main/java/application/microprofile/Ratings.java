@@ -16,7 +16,11 @@ public class Ratings {
 
   public TwoReviewers getRating(int id) {
     if (new Random().nextInt(100) < 30) {
-      throw new RuntimeException("Be nice to developers!");
+      try {
+        Thread.sleep(1500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
     }
 
     RatingResponse ratings = ratingsService.getRatings(id);
