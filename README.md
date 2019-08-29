@@ -53,6 +53,9 @@ export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpa
 echo http://${GATEWAY_URL}/productpage
 ```
 
+The sidecars are automatically injected when annotation `sidecar.istio.io/inject: "true"` is present
+and namespace is in `smmr` (`oc edit smmr default -n istio-system`).
+
 ### Remove Bookinfo
 ```bash
 oc delete project bookinfo

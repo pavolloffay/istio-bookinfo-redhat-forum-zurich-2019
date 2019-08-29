@@ -113,7 +113,7 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9080"
         prometheus.io/scheme: "http"
-        kiali.io/runtimes: quarkus
+        kiali.io/runtimes: microprofile-1.1
       labels:
         app: reviews
         version: v1
