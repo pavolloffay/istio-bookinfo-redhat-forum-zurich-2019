@@ -1,5 +1,6 @@
 package application.microprofile;
 
+import java.util.Random;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import org.eclipse.microprofile.opentracing.Traced;
@@ -14,6 +15,10 @@ public class Ratings {
   private RatingsService ratingsService;
 
   public TwoReviewers getRating(int id) {
+    if (new Random().nextInt(100) < 30) {
+      throw new RuntimeException("Be nice to developers!");
+    }
+
     RatingResponse ratings = ratingsService.getRatings(id);
     TwoReviewers twoReviewers = new TwoReviewers();
     Integer stars = ratings.getRatings().get("Reviewer1");
