@@ -49,7 +49,7 @@ oc -n bookinfo apply -f manifests/02-reviewsv3.yaml
 Do request to the app:
 ```bash
 export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}')
-curl ${GATEWAY_URL}/productpage
+echo http://${GATEWAY_URL}/productpage
 ```
 
 ### Remove Bookinfo
