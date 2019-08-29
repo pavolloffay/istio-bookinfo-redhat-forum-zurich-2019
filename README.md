@@ -35,13 +35,13 @@ Follow the instructions on https://gitlab.cee.redhat.com/istio/install-rhossm/tr
 ### Create Istio Service Mesh
 ```bash
 oc new-project istio-system
-oc create -f smcp.yaml # oc delete smcp full-install
+oc create -f manifests/smcp.yaml # oc delete smcp full-install
 ```
 
 ## Deploy Bookinfo
 ```bash
 oc new-project bookinfo
-oc -n bookinfo apply -f manifests/00-product-details-reviewsv1.yaml && oc -n bookinfo apply -f bookinfo-gateway.yaml
+oc -n bookinfo apply -f manifests/00-product-details-reviewsv1.yaml && oc -n bookinfo apply -f manifests/bookinfo-gateway.yaml
 oc -n bookinfo apply -f manifests/01-reviewsv2-ratings.yaml
 oc -n bookinfo apply -f manifests/02-reviewsv3.yaml
 ```
