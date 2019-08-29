@@ -36,6 +36,7 @@ Follow the instructions on https://gitlab.cee.redhat.com/istio/install-rhossm/tr
 ```bash
 oc new-project istio-system
 oc create -f manifests/smcp.yaml # oc delete smcp full-install
+# oc edit kiali kiali  -n istio-system # change tracing.service: "jaeger-query"
 ```
 
 ## Deploy Bookinfo
