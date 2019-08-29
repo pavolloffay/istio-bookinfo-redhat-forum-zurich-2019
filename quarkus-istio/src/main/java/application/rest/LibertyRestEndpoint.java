@@ -15,8 +15,6 @@ package application.rest; /*****************************************************
  *******************************************************************************/
 
 import application.microprofile.Ratings;
-import application.microprofile.TwoReviewers;
-import io.opentracing.Tracer;
 import java.io.StringReader;
 import javax.inject.Inject;
 import javax.json.Json;
@@ -44,8 +42,6 @@ public class LibertyRestEndpoint extends Application {
 
   @Inject
   private Ratings ratings;
-  @Inject
-  private Tracer tracer;
 
   private String getJsonResponse (String productId, int starsReviewer1, int starsReviewer2) {
     	String result = "{";
@@ -184,8 +180,6 @@ public class LibertyRestEndpoint extends Application {
 
 
 /**
- tracer.activeSpan().setBaggageItem("end-user", user);
- tracer.activeSpan().setBaggageItem("user-agent", useragent);
  TwoReviewers twoReviewers = ratings.getRating(productId);
  starsReviewer1 = twoReviewers.getReviewer1();
  starsReviewer2 = twoReviewers.getReviewer2();
