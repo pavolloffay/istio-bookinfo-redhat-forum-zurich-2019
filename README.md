@@ -68,6 +68,6 @@ curl -ivX GET localhost:9080/reviews/0
 The application is not hosted here. The modifications were done in a separate repository.
 
 ```bash
-docker build -t "quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0" -t quay.io/pavolloffay/examples-bookinfo-productpage-v1:latest .
-docker push quay.io/pavolloffay/examples-bookinfo-productpage-v1
+docker build -t "quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0" .
+docker push quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0
 ``` 

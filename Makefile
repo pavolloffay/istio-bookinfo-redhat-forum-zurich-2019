@@ -34,3 +34,11 @@ v3: build
 .PHONY: redeploy-v3
 redeploy-v3:
 	@kubectl patch deployment reviews-v3 -p  "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}" -n bookinfo
+
+.PHONY: v3-set-image-exceptions
+v3-set-image-exceptions:
+	kubectl set image deployment/reviews-v3 reviews=${DOCKER_NAMESPACE}/examples-bookinfo-reviews-v3:${VERSION}-exceptions
+
+.PHONY: v3-set-image-delays
+v3-set-image-delays:
+	kubectl set image deployment/reviews-v3 reviews=${DOCKER_NAMESPACE}/examples-bookinfo-reviews-v3:${VERSION}-delays
