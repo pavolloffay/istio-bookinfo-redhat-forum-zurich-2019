@@ -64,7 +64,7 @@ oc delete project bookinfo
 ## Develop Reviews application
 ```bash
 oc port-forward pod/ratings-v1-d4db56d5b-bpl9g 9081:9080 -n bookinfo
-ENABLE_REvIEWS=true make dev
+ENABLE_REVIEWS=true make dev
 curl -ivX GET localhost:9080/reviews/0
 ```
 
