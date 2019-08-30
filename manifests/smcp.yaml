@@ -73,6 +73,7 @@ spec:
         # if required. only one instance may use agentStrategy=DaemonSet
         #agentStrategy: DaemonSet
         elasticsearch:
+          nodeCount: 1
           resources:
             requests:
               memory: "2Gi"
