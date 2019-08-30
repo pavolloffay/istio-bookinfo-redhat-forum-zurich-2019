@@ -39,6 +39,10 @@ oc create -f manifests/smcp.yaml # oc delete smcp full-install
 # oc edit kiali kiali  -n istio-system # change tracing.service: "jaeger-query"
 ```
 
+It creates two CRs:
+* `oc get smcp full-install -o yaml`
+* `oc get smmr default -o yaml` - defines automatically watched namespaces for sidecar injection enabled by annotation `sidecar.istio.io/inject: "true"`. 
+
 ## Deploy Bookinfo
 ```bash
 oc new-project bookinfo
@@ -52,9 +56,6 @@ Do request to the app:
 export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}')
 echo http://${GATEWAY_URL}/productpage
 ```
-
-The sidecars are automatically injected when annotation `sidecar.istio.io/inject: "true"` is present
-and namespace is in `smmr` (`oc edit smmr default -n istio-system`).
 
 ### Remove Bookinfo
 ```bash

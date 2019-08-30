@@ -72,6 +72,13 @@ spec:
         #template: production-elasticsearch
         # if required. only one instance may use agentStrategy=DaemonSet
         #agentStrategy: DaemonSet
+        elasticsearch:
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "0.5"
+            limits:
+              memory: "2Gi"
 ---
 
 apiVersion: maistra.io/v1
