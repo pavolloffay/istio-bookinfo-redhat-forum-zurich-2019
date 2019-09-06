@@ -16,7 +16,7 @@ spec:
         # constrain resources for use in smaller environments
         resources:
           requests:
-            cpu: 100m
+            cpu: 20m
             memory: 128Mi
           limits:
             cpu: 500m
@@ -41,7 +41,7 @@ spec:
         # constrain resources for use in smaller environments
         resources:
           requests:
-            cpu: 100m
+            cpu: 20m
             memory: 1G
           limits:
             cpu: 500m

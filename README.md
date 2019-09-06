@@ -43,6 +43,12 @@ It creates two CRs:
 * `oc get smcp full-install -o yaml`
 * `oc get smmr default -o yaml` - defines automatically watched namespaces for sidecar injection enabled by annotation `sidecar.istio.io/inject: "true"`. 
 
+
+### Debug insufficient CPU
+``` bash
+oc describe nodes | grep cpu
+```
+
 ## Deploy Bookinfo
 ```bash
 oc new-project bookinfo
