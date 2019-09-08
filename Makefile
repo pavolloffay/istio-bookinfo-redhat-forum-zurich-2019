@@ -46,3 +46,7 @@ v3-set-image-delays:
 .PHONY: v3-set-image-default
 v3-set-image-default:
 	kubectl set image deployment/reviews-v3 reviews=${DOCKER_NAMESPACE}/examples-bookinfo-reviews-v3:${VERSION}
+
+.PHONY: generate-load
+generate-load:
+	while true; do curl http://istio-ingressgateway-istio-system.apps.ploffay.crossproduct.rhmw.io/productpage; done > /dev/null 2>&1 
