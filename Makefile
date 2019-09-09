@@ -4,7 +4,7 @@ VERSION?=0.12.0
 
 .PHONY:build
 build:
-	cd reviews-quarkus && ./mvnw clean package
+	cd reviews-quarkus && ./mvnw clean package -DskipTests
 
 .PHONY:dev
 dev:
