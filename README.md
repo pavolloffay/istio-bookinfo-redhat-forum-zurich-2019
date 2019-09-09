@@ -52,7 +52,7 @@ oc describe nodes | grep cpu
 ## Deploy Bookinfo
 ```bash
 oc new-project bookinfo
-oc -n bookinfo apply -f manifests/00-product-details-reviewsv1.yaml && oc -n bookinfo apply -f manifests/bookinfo-gateway.yaml
+oc -n bookinfo apply -f manifests/00-product-details-reviewsv1.yaml
 oc -n bookinfo apply -f manifests/01-reviewsv2-ratings.yaml
 oc -n bookinfo apply -f manifests/02-reviewsv3.yaml
 ```
