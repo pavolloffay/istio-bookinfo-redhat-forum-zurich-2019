@@ -1,4 +1,5 @@
-package application.rest; /*******************************************************************************
+package application.rest;
+/*******************************************************************************
  * Copyright (c) 2017 Istio Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +16,7 @@ package application.rest; /*****************************************************
  *******************************************************************************/
 
 import application.microprofile.Ratings;
+import application.microprofile.TwoReviewers;
 import java.io.StringReader;
 import javax.inject.Inject;
 import javax.json.Json;
