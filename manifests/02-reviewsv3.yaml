@@ -4,34 +4,6 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: reviews-v2
-  labels:
-    app: reviews
-    version: v2
-spec:
-  replicas: 1
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/inject: "true"
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "9080"
-        prometheus.io/scheme: "http"
-        kiali.io/runtimes: microprofile-1.1
-      labels:
-        app: reviews
-        version: v2
-    spec:
-      containers:
-        - name: reviews
-          image: quay.io/pavolloffay/examples-bookinfo-reviews-v2:0.12.0
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 9080
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
   name: reviews-v3
   labels:
     app: reviews
@@ -62,12 +34,6 @@ apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: reviews
   namespace: bookinfo
-  selfLink: >-
-    /apis/networking.istio.io/v1alpha3/namespaces/bookinfo/destinationrules/reviews
-  uid: f5e05c61-d248-11e9-8155-02e11188b43c
-  resourceVersion: '5644378'
-  generation: 1
-  creationTimestamp: '2019-09-08T14:57:21Z'
   labels:
     kiali_wizard: weighted_routing
 spec:
