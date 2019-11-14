@@ -82,3 +82,6 @@ The application is not hosted here. The modifications were done in a separate re
 docker build -t "quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0" .
 docker push quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0
 ``` 
+
+## Deployin Kiali withot operator
+In istio upstream kiali can be deployed without operator. Jaeger and grafana URLs can be configured in Kiali configmap `k edit configmap kiali -o yaml`
