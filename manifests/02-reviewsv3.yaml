@@ -1,7 +1,7 @@
 ##################################################################################################
 # Reviews service
 ##################################################################################################
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v3
@@ -10,6 +10,10 @@ metadata:
     version: v3
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: reviews
+      version: v3
   template:
     metadata:
       annotations:
@@ -33,7 +37,6 @@ kind: DestinationRule
 apiVersion: networking.istio.io/v1alpha3
 metadata:
   name: reviews
-  namespace: bookinfo
   labels:
     kiali_wizard: weighted_routing
 spec:

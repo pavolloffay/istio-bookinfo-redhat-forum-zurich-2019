@@ -49,4 +49,4 @@ v3-set-image-default:
 
 .PHONY: generate-load
 generate-load:
-	while true; do curl http://istio-ingressgateway-istio-system.apps.ploffay.crossproduct.rhmw.io/productpage; done > /dev/null 2>&1 
+	while true; do curl http://192.168.39.214:31380/productpage; done > /dev/null 2>&1

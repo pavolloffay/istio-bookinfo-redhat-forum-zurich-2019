@@ -15,7 +15,7 @@ spec:
   selector:
     app: ratings
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ratings-v1
@@ -24,6 +24,10 @@ metadata:
     version: v1
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ratings
+      version: v1
   template:
     metadata:
       annotations:
@@ -42,7 +46,7 @@ spec:
 ##################################################################################################
 # Reviews service
 ##################################################################################################
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-v2
@@ -51,6 +55,10 @@ metadata:
     version: v2
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: reviews
+      version: v2
   template:
     metadata:
       annotations:

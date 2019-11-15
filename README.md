@@ -83,5 +83,39 @@ docker build -t "quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0" .
 docker push quay.io/pavolloffay/examples-bookinfo-productpage-v1:0.12.0
 ``` 
 
-## Deployin Kiali withot operator
-In istio upstream kiali can be deployed without operator. Jaeger and grafana URLs can be configured in Kiali configmap `k edit configmap kiali -o yaml`
+## Deploying Istio and Kiali on Minikube without an operator
+
+Deploy the example:
+```bash
+kubectl label namespace default istio-injection=enabled
+k apply -f manifests/00-product-details-reviewsv1.yaml                                                                                       5:23 
+k apply -f manifests/01-reviewsv2-ratings.yaml
+k apply -f manifests/02-reviewsv3.yaml
+```
+
+### Configure Kiali properly with Jaeger and Grafana URLs
+Kiali CR or configmap has to define Jaeger and Grafana URLs.
+
+Expose Jaeger and Grafana services using `NodePort`:
+```bash
+k edit service grafana -n istio-system # set NodePort
+k edit service jaeger -n istio-system # set NodePort
+minikube service jaeger-query -n istio-system
+minikube service grafana -n istio-system
+```
+
+```yaml
+    external_services:
+      grafana:
+        in_cluster_url: http://grafana:3000
+        url: http://192.168.39.214:32564/  
+      tracing: # note that older versions of kiali were using jaeger node name
+        in_cluster_url: http://jaeger-query:16686
+        url: http://192.168.39.214:30192/jaeger
+```
+
+### Expose istio ingress gateway outside of minikube
+```bash
+minikube service istio-ingressgateway -n istio-system
+```
+
